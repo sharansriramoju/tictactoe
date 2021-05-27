@@ -87,16 +87,19 @@ class _GameState extends State<Game> {
                         onTap: () {
                           setState(
                             () {
-                              count++;
                               print(index);
-                              if (_tap) {
-                                _values[index] = "X";
-                                x.add(index);
-                                _tap = false;
+                              if (x.contains(index) | o.contains(index)) {
                               } else {
-                                _values[index] = "O";
-                                o.add(index);
-                                _tap = true;
+                                count++;
+                                if (_tap) {
+                                  _values[index] = "X";
+                                  x.add(index);
+                                  _tap = false;
+                                } else {
+                                  _values[index] = "O";
+                                  o.add(index);
+                                  _tap = true;
+                                }
                               }
                               print(x);
                               print(o);
