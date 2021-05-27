@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/game.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,78 +21,34 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> symbol = ["", "", "", "", "", "", "", "", ""];
-  bool _image = false;
-  Widget myWidget() {
-    if (_image == false) {
-      return Container(
-        width: 200,
-        height: 200,
-        color: Colors.white,
-      );
-    } else if (_image == true) {
-      return Container(
-        width: 200,
-        height: 200,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(
-                "assets/x.jpg",
-              ),
-              fit: BoxFit.cover),
-        ),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text("tic tac toe"),
+        title: Text("Tic-Tac-Toe"),
+        backgroundColor: Colors.black45,
       ),
       body: Container(
-        height: height,
-        color: Colors.black87,
+        color: Colors.black,
         child: Center(
-          child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                crossAxisCount: 3,
+          child: GestureDetector(
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Game())),
+            child: Container(
+              height: height * 0.15,
+              width: width * 0.7,
+              color: Colors.white38,
+              child: Center(
+                child: Text(
+                  "Start the game",
+                  style: TextStyle(fontSize: height * 0.05),
+                ),
               ),
-              itemCount: 9,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      if (_image == false) {
-                        symbol[index] = "x";
-                        _image = true;
-                      } else {
-                        symbol[index] = "o";
-                        _image = false;
-                      }
-                    });
-                  },
-                  child: Container(
-                    color: Colors.white,
-                    child: Center(
-                      child: Text(
-                        symbol[index],
-                        style: TextStyle(
-                          fontSize: 120,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              }),
+            ),
+          ),
         ),
       ),
     );
