@@ -1,16 +1,22 @@
-# tictactoe
+# TIC-TAC-TOE
 
-A new Flutter project.
+this is my first flutter project
 
-## Getting Started
+# Description
 
-This project is a starting point for a Flutter application.
+My Own Tic Tac Toe Game App 
 
-A few resources to get you started if this is your first Flutter project:
+# Screenshots
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img src="https://user-images.githubusercontent.com/70462967/120141133-89550500-c1f9-11eb-91cf-c7b81e243a2c.png" alt="drawing" height="500"/>
+<img src="https://user-images.githubusercontent.com/70462967/120141144-9114a980-c1f9-11eb-8ec9-7468be88d713.png" alt="drawing" height="500"/>
+<img src="https://user-images.githubusercontent.com/70462967/120141158-9a057b00-c1f9-11eb-9551-fab14ae42af0.png" alt="drawing" height="500"/>
+<img src="https://user-images.githubusercontent.com/70462967/120141174-a093f280-c1f9-11eb-9fbd-ca64d8a170e6.png" alt="drawing" height="500"/>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
+
+
+
+
