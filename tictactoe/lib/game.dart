@@ -158,7 +158,7 @@ class _GameState extends State<Game> {
                     style: GoogleFonts.badScript(
                       textStyle: TextStyle(
                         fontSize: height * 0.05,
-                        color: Colors.black,
+                        color: visibility ? Color(0xfff4f9f9) : Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
