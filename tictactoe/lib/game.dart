@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Game extends StatefulWidget {
   @override
@@ -37,12 +36,12 @@ class _GameState extends State<Game> {
         (o.contains(0) & o.contains(4) & o.contains(8)) |
         (o.contains(2) & o.contains(4) & o.contains(6))) {
       visibility = false;
-      k = "O WON";
+      k = "O Won";
 
       return k;
     } else if (count == 9) {
       visibility = false;
-      k = "DRAW";
+      k = "Draw";
 
       return k;
     } else {
@@ -61,75 +60,107 @@ class _GameState extends State<Game> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigoAccent,
-        title: Text("Tic-Tac-Toe"),
+        backgroundColor: Colors.black,
+        title: Center(
+          child: Text(
+            "Tic-Tac-Toe",
+            style: GoogleFonts.badScript(
+              textStyle: TextStyle(
+                color: Color(0xffF4F3F3),
+                fontSize: width * 0.1,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
       ),
       body: Container(
-        color: Colors.black,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              const Color(0xFFf4f9f9),
+              const Color(0xFF000000),
+            ],
+            begin: const FractionalOffset(2.0, 2.0),
+            end: const FractionalOffset(2.0, 0.0),
+            stops: [0.0, 1.0],
+            tileMode: TileMode.clamp,
+          ),
+        ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Visibility(
                 visible: visibility,
-                child: Center(
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    itemCount: 9,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 1,
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(
-                            () {
-                              print(index);
-                              if (x.contains(index) | o.contains(index)) {
-                              } else {
-                                count++;
-                                if (_tap) {
-                                  _values[index] = "X";
-                                  x.add(index);
-                                  _tap = false;
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Center(
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      itemCount: 9,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: 1,
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ),
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(
+                              () {
+                                if (x.contains(index) | o.contains(index)) {
                                 } else {
-                                  _values[index] = "O";
-                                  o.add(index);
-                                  _tap = true;
+                                  count++;
+                                  if (_tap) {
+                                    _values[index] = "X";
+                                    x.add(index);
+                                    _tap = false;
+                                  } else {
+                                    _values[index] = "O";
+                                    o.add(index);
+                                    _tap = true;
+                                  }
                                 }
-                              }
-                              print(x);
-                              print(o);
-                            },
-                          );
-                        },
-                        child: Container(
-                          color: Colors.white,
-                          child: Center(
+                              },
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Color(0xffF4F3F3),
+                                borderRadius: BorderRadius.circular(15)),
                             child: Text(
                               _values[index],
-                              style: TextStyle(
-                                  fontSize: height * 0.15,
-                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.badScript(
+                                textStyle: TextStyle(
+                                    fontSize: height * 0.1,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
               Container(
+                decoration: BoxDecoration(
+                  color: visibility ? Colors.transparent : Color(0xffF4F3F3),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                width: width * 0.3,
                 child: Center(
                   child: Text(
                     result(),
-                    style: TextStyle(
-                      fontSize: height * 0.05,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                    style: GoogleFonts.badScript(
+                      textStyle: TextStyle(
+                        fontSize: height * 0.05,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -149,15 +180,20 @@ class _GameState extends State<Game> {
                 child: Padding(
                   padding: EdgeInsets.all(10),
                   child: Container(
-                    color: Colors.white,
+                    decoration: BoxDecoration(
+                        color: Color(0xffF4F3F3),
+                        borderRadius: BorderRadius.circular(15)),
                     height: height * 0.1,
                     width: width * 0.7,
                     child: Center(
                       child: Text(
-                        "Start a new game",
-                        style: TextStyle(
+                        "Reset Game",
+                        style: GoogleFonts.badScript(
+                          textStyle: TextStyle(
                             fontSize: height * 0.04,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
